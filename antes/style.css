@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+
+body {
+  height: 100vh;
+  background-color: rgb(30, 58, 138);
+  overflow: hidden;
+}
+.tabela {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  background-color: white;
+  padding: 7px;
+  margin: auto;
+}
+
+h1 {
+  color: white;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  text-align: center;
+  box-shadow: 3px 3px 5px 0px #0000008e;
+  font-size: 60px;
+  background-color: cadetblue;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+table {
+  width: 80%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 3px 3px 5px 0px #0000008e;
+}
+
+td,
+th {
+  border: 1px solid black;
+  padding: 4px;
+  text-align: left;
+}
+
+.forms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  min-width: 200px;
+  background-color: white;
+  padding: 15px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 0px #0000008e;
+}
+.botao-cadastro {
+  background-color: rgb(255, 255, 255);
+  text-decoration: none;
+  color: green;
+  padding: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 150px;
+  box-shadow: 3px 3px 5px 0px #0000008e;
+  border-radius: 8px;
+  border-style: ridge;
+}
+.botao-cadastro:hover {
+    background-color: rgb(226, 226, 226);
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+.botao-cadastro:visited {
+    color: black;
+}
+button {
+  padding: 5px;
+  margin-top: 12px;
+}
+.id-row {
+  width: 3.33%;
+  text-align: center;
+}
+.idade-row {
+  width: 6.66%;
+}
+.nome-row,
+.email-row {
+  width: 26.66%;
+}
+.telefone-row {
+  width: 13.33%;
+}
+.acao-row {
+  width: 13.33%;
+  text-align: center;
+}
+.acao-row, .telefone-row, .email-row, .nome-row, .idade-row, .id-row{
+    height: 40px;
+}
+.inputs{
+    margin: auto;
+    height: auto;
+}   
+.botao-editar, button{
+    background-color: rgb(40, 140, 255);
+    color: aliceblue;
+    padding: 6px;
+    margin: 5px;
+    margin-top: 20px;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+}
+.botao-editar:hover, button:hover{
+    background-color: rgb(32, 108, 194);
+}
+.botao-excluir, .botao-cancelar{
+    background-color: rgb(255, 40, 40);
+    color: aliceblue;
+    padding: 6px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+}
+.botao-excluir:hover, .botao-cancelar:hover{
+    background-color: rgb(202, 33, 33);
+}
+
