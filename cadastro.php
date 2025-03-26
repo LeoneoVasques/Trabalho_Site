@@ -1,3 +1,28 @@
+<?php
+    include("conexaoLogin.php")
+    $nome = "";
+    $email = "";
+    $senha = "";
+
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $nome = $_POST['nome'];
+        $email = $_POST["email"];
+        $senha = $_POST["senha"];
+    }
+    $sql = "SELECT * FROM users WHERE email = '$email'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        echo "Email já registrado!";
+    } else {
+        $sql = "INSERT INTO users (nome, email, password) VALUES ('$nome', '$email', '$senha')";
+        if ($conn->query($sql) === TRUE) {
+            echo "Usuário registrado com sucesso!";
+        } else {
+            echo "Erro: " . $conn->error;
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,19 +38,16 @@
         </div>
         <br>
         <div>
-        <form action="">
+        <form method="POST">
             <label for="">Digite seu nome</label>
             <br>
-            <input type="text">
+            <input name="nome" type="text">
             <br>
             <label for="">Digite seu e-mail</label>
-            <input type="email">
+            <input name="email" type="email">
             <br>
             <label for="">Digite sua senha</label>
-            <input type="password">
-            <br>
-            <label for="">Confirme sua senha</label>
-            <input type="password">
+            <input name="senha" type="password">
             <br>
             <button class="entrar" type="submit">Cadastrar</button>
         </div>

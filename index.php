@@ -1,3 +1,20 @@
+<?php
+    include("conexaoLogin.php");
+    $email = "";
+    $senha = "";
+
+    if($_SERVER['REQUEST_METHOD']=='GET'){
+        $email = $_GET["email"];
+        $senha = $_GET["senha"];
+    }
+
+
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
