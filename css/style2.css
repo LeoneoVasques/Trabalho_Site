@@ -65,7 +65,7 @@ header p {
   width: 40px;
   height: 40px;
 }
-input {
+.input_search {
   border-radius: 15px;
   width: 40%;
   height: 50%;
@@ -122,7 +122,7 @@ table {
   border-collapse: collapse;
 }
 tr {
-  height: 40px;
+  height: 50px;
   border: 2px solid black;
 }
 td {
@@ -135,4 +135,52 @@ th {
   border: 2px solid black;
   border-radius: 10px;
   border-collapse: collapse;
+}
+.botao-excluir{
+  background-color: red;
+  padding: 10px;
+  border-radius: 10px;
+  color: inherit;
+  color: white;
+}
+.botao-excluir:hover{
+  background-color: rgb(170, 0, 0);
+}
+.botao-editar{
+  background-color: green;
+  padding: 10px;
+  border-radius: 10px;
+  color: inherit;
+  color: white;
+}
+.botao-editar:hover{
+  background-color: rgb(0, 90, 0);
+}
+.novo_produto{
+  background-color: green;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 10px;
+  color: inherit;
+  color: white;
+  margin-bottom: 50px;
+  margin-top: -250px;
+}
+.novo_produto:hover{
+  background-color: rgb(0, 90, 0);
+}
+.corpo2{
+  background-color: rgb(245, 245, 245);
+  display: block;
+  box-shadow: 5px, 5px ,5px;
+  border-radius: 15px;
+  padding: 30px;
+}
+h2{
+  color: rgb(30, 58, 138);
+}
+.adicionar{
+  padding-top: 100px;
 }

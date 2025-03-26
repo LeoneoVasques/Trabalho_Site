@@ -9,6 +9,21 @@
     $result = $mysqli->query($sql);
     $sql ="SELECT * FROM produtos";
     $result = $mysqli->query($sql);
+    $produto = "";
+    $quantidade = "";
+    $valor = "";
+    $total = "";
+    
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $produto = $_POST["produto"];
+        $quantidade = $_POST["quantidade"];
+        $valor = $_POST["valor"];
+        $sql ="INSERT INTO produtos (produto, quantidade, valor) VALUES ('$produto', '$quantidade', '$valor')";
+        $result = $mysqli->query($sql);
+        header("location: aplicativo.php");
+        exit;
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -73,38 +88,30 @@
         </div>
       </span>
       <span class="bd">
-        <div class="adicionar">
-        <a class="novo_produto" href="cadastrar_produto.php">Novo Produto</a>
+      <div class="corpo2">
+        <div class="bemvindo">
+            <h2>Novo Produto</h2>
         </div>
-      <table>
-        <thead>
-          <tr>
-            <th class='id-row'>id</th>
-            <th class='produto-row'>Produto</th>
-            <th class='quantidade-row'>Quantidade</th>
-            <th class='valor-row'>Valor</th>
-            <th class='total-row'>Total em estoque</th>
-            <th class='acao-row'>Ação</th>
-          </tr>
-        </thead>
-    <?php
-    while($row = $result->fetch_assoc()){
-        echo "
-                    <tr>
-                        <td  class='id-row'>$row[id]</td>
-                        <td class='produto-row'>$row[produto]</td>
-                        <td class='quantidade-row'>$row[quantidade]</td>
-                        <td class='valor-row'>R$ $row[valor]</td>
-                        <td class='total-row'>R$ $row[total]</td>
-                        <td class='acao-row'>
-                            <a class='botao-editar' href='editar_produto.php?id=$row[id]'>Editar</a>
-                            <a class='botao-excluir' href='excluir.php?id=$row[id]'>Excluir</a>
-                        </td>
-                    </tr> 
-        ";
-    }
-    ?>
-    </table>
+        <br>
+        <div>
+        <form method="POST">
+            <label for="">Nome do Produto</label>
+            <br>
+            <input name="produto" type="text" required>
+            <br>
+            <label for="">Quantidade</label>
+            <br>
+            <input name="quantidade" type="number" >
+            <br>
+            <label for="">Valor</label>
+            <br>
+            <input name="valor" type="text">
+            <br>
+            <button style="margin-top:30px" class="botao-editar" type="submit">Cadastrar</button>
+            <br>
+        </form>
+        </div>
+    </div>
       </span>
     </div>
   </body>

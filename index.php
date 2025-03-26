@@ -49,7 +49,7 @@
             <label for="">Digite sua senha</label>
             <input name="senha" type="password" required>
             <br>
-            <a class="esqueci" href="">Esqueci a senha</a>
+            <a class="esqueci" id="indisponivel" href="">Esqueci a senha</a>
             <br>
             <button class="entrar" type="submit">Entrar</button>
         </div>
@@ -60,4 +60,10 @@
     </div>
     
 </body>
+<script>
+    document.getElementById("indisponivel").addEventListener("click", function(event) {
+        event.preventDefault();
+        alert("Indisponível no momento."); 
+    });
+</script>
 </html>

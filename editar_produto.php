@@ -1,14 +1,29 @@
 <?php
   include("conexao.php");
-    $sql ="CREATE TABLE IF NOT EXISTS produtos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    produto VARCHAR (100) NOT NULL,
-    quantidade VARCHAR(100),
-    valor FLOAT,
-    total FLOAT GENERATED ALWAYS AS (quantidade * valor) STORED)";
-    $result = $mysqli->query($sql);
-    $sql ="SELECT * FROM produtos";
-    $result = $mysqli->query($sql);
+    $produto = "";
+    $quantidade = "";
+    $valor = "";
+    $total = "";
+    if($_SERVER['REQUEST_METHOD'] == 'GET'){
+        $id = $_GET["id"];
+        $sql = "SELECT * FROM produtos WHERE id=$id";
+        $result = $mysqli->query($sql);
+        $row = $result->fetch_assoc();
+        $id = $row["id"];
+        $produto = $row["produto"];
+        $quantidade = $row["quantidade"];
+        $valor = $row["valor"];
+        }
+        else {
+            $id = $_GET["id"];
+            $produto = $_POST["produto"];
+            $quantidade = $_POST["quantidade"];
+            $valor = $_POST["valor"];
+            $sql = "UPDATE produtos SET produto='$produto', quantidade='$quantidade', valor='$valor' WHERE id = $id ";
+            $result = $mysqli->query($sql);
+            header("location: aplicativo.php");
+            exit;
+        }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -73,38 +88,30 @@
         </div>
       </span>
       <span class="bd">
-        <div class="adicionar">
-        <a class="novo_produto" href="cadastrar_produto.php">Novo Produto</a>
+      <div class="corpo2">
+        <div class="bemvindo">
+            <h2>Editar Produto</h2>
         </div>
-      <table>
-        <thead>
-          <tr>
-            <th class='id-row'>id</th>
-            <th class='produto-row'>Produto</th>
-            <th class='quantidade-row'>Quantidade</th>
-            <th class='valor-row'>Valor</th>
-            <th class='total-row'>Total em estoque</th>
-            <th class='acao-row'>Ação</th>
-          </tr>
-        </thead>
-    <?php
-    while($row = $result->fetch_assoc()){
-        echo "
-                    <tr>
-                        <td  class='id-row'>$row[id]</td>
-                        <td class='produto-row'>$row[produto]</td>
-                        <td class='quantidade-row'>$row[quantidade]</td>
-                        <td class='valor-row'>R$ $row[valor]</td>
-                        <td class='total-row'>R$ $row[total]</td>
-                        <td class='acao-row'>
-                            <a class='botao-editar' href='editar_produto.php?id=$row[id]'>Editar</a>
-                            <a class='botao-excluir' href='excluir.php?id=$row[id]'>Excluir</a>
-                        </td>
-                    </tr> 
-        ";
-    }
-    ?>
-    </table>
+        <br>
+        <div>
+        <form method="POST">
+            <label for="">Nome do Produto</label>
+            <br>
+            <input name="produto" type="text" required value="<?php echo $produto;?>">
+            <br>
+            <label for="">Quantidade</label>
+            <br>
+            <input name="quantidade" type="number" value="<?php echo $quantidade;?>">
+            <br>
+            <label for="">Valor</label>
+            <br>
+            <input name="valor" type="text" value="<?php echo $valor;?>">
+            <br>
+            <button style="margin-top:30px" class="botao-editar" type="submit">Salvar</button>
+            <br>
+        </form>
+        </div>
+    </div>
       </span>
     </div>
   </body>
