@@ -1,0 +1,1 @@
+Forme um grupo com alunos e encima de um projeto de um site(pode ser um existente ou de projeto passado) e descreva sua arquitetura de trabalho(slide2). Faça uma pesquisa do protocolo envolvido que ele irá trabalhar em comum(slide1) e descreva o framework envolvido no desenvolvimento do front-end e dê detalhes de sua produção(slide3) .
