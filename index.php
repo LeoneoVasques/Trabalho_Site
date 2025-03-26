@@ -3,17 +3,21 @@
     $email = "";
     $senha = "";
 
-    if($_SERVER['REQUEST_METHOD']=='GET'){
-        $email = $_GET["email"];
-        $senha = $_GET["senha"];
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        $email = $_POST["email"];
+        $senha = $_POST["senha"];
+        $sql = "SELECT email, senha FROM users WHERE email = '$email'";
+        $result = $mysqli->query($sql);
+        if ($result->num_rows == 0) {
+            echo "<script>alert('Usuário não encontrado!');</script>";
+        }
+        else{
+            echo "<script>
+            alert('Login bem sucedido!');
+            window.location.href = 'aplicativo.php';
+            </script>";
+        }
     }
-
-
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -30,14 +34,14 @@
         </div>
         <br>
         <div>
-        <form action="">
+        <form method="POST">
             <label for="">Digite seu e-mail</label>
             <br>
-            <input type="email">
+            <input name="email" type="email" required>
             <br>
             <br>
             <label for="">Digite sua senha</label>
-            <input type="password">
+            <input name="senha" type="password" required>
             <br>
             <a class="esqueci" href="">Esqueci a senha</a>
             <br>
