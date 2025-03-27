@@ -83,7 +83,7 @@
             <th class='produto-row'>Produto</th>
             <th class='quantidade-row'>Quantidade</th>
             <th class='valor-row'>Valor</th>
-            <th class='total-row'>Total em estoque</th>
+            <th class='total-row'>Valor em estoque</th>
             <th class='acao-row'>Ação</th>
           </tr>
         </thead>

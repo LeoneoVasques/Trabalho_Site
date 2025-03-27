@@ -106,7 +106,7 @@ header img {
 .bd {
   background-color: rgb(154, 163, 188);
   display: flex;
-  justify-content: center;
+  position: relative;
   flex-direction: column;
   align-items: center;
   width: 100%;
@@ -115,7 +115,7 @@ header img {
 table {
   background-color: white;
   width: 60%;
-  min-width: 500px;
+  min-width: 595  px;
   border-radius: 10px;
   box-shadow: 30px;
   border: 2px solid black;
@@ -123,40 +123,42 @@ table {
 }
 tr {
   height: 50px;
-  border: 2px solid black;
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 td {
-  width: 250px;
-  border: 2px solid black;
-  border-collapse: collapse;
   text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+  min-width: 50px;
 }
 th {
-  border: 2px solid black;
-  border-radius: 10px;
   border-collapse: collapse;
+  border: 1px solid black;
 }
-.botao-excluir{
+.botao-excluir {
   background-color: red;
   padding: 10px;
   border-radius: 10px;
   color: inherit;
   color: white;
+  margin: 5px;
 }
-.botao-excluir:hover{
+.botao-excluir:hover {
   background-color: rgb(170, 0, 0);
 }
-.botao-editar{
+.botao-editar {
   background-color: green;
   padding: 10px;
   border-radius: 10px;
   color: inherit;
   color: white;
+  margin: 5px;
 }
-.botao-editar:hover{
+.botao-editar:hover {
   background-color: rgb(0, 90, 0);
 }
-.novo_produto{
+.novo_produto {
   background-color: green;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -165,22 +167,35 @@ th {
   border-radius: 10px;
   color: inherit;
   color: white;
-  margin-bottom: 50px;
-  margin-top: -250px;
 }
-.novo_produto:hover{
+.novo_produto:hover {
   background-color: rgb(0, 90, 0);
 }
-.corpo2{
+.corpo2 {
   background-color: rgb(245, 245, 245);
   display: block;
-  box-shadow: 5px, 5px ,5px;
+  box-shadow: 5px, 5px, 5px;
   border-radius: 15px;
   padding: 30px;
+  margin-top: 60px;
 }
-h2{
+h2 {
   color: rgb(30, 58, 138);
 }
-.adicionar{
-  padding-top: 100px;
+.adicionar {
+  padding: 20px;
+  margin: 20px;
+}
+.acao-row td{
+  min-width: 150px;
+}
+.acao-row th{
+  min-width: 150px;
+}
+.id-row th{
+  min-width: 50px;
+  padding: auto;
+}
+.id-row td{
+  min-width: 50px;
 }
