@@ -1,13 +1,13 @@
 <?php
 include("conexao.php");
 $id = $_GET["id"];
-$sql = "DELETE FROM produtos WHERE id=$id";
+$sql = "DELETE FROM fornecedores WHERE id=$id";
 $result = $mysqli->query($sql);
-header("location: aplicativo.php");
+header("location: fornecedores.php");
 exit;
 ?>
 
-<?php
+  <?php
 include("relatorios.php");
 $id = new mysqli("localhost", "root", "", "produtos_db");
 ?>

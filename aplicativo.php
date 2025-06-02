@@ -22,8 +22,25 @@
     <header>
       <p><b>Estoque</b></p>
       <div class="pesquisa">
-        <a id="#" href=""><img src="img/search.svg" alt="" /></a>
+        <a href=""><img src="img/search.svg" alt="" /></a>
         <input class="input_search" type="text" />
+        <?php 
+          if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $search = $_POST['search'];
+            $sql = "SELECT * FROM produtos WHERE produto LIKE '%$search%'";
+            $result = $mysqli->query($sql);
+
+            if($result->num_rows > 0) {
+              while($row = $result->fetch_assoc()) {
+                echo "<div class='search-result'>";
+                echo "<p>" . $row['produto'] . "</p>";
+                echo "</div>";
+              }
+            } else {
+              echo "<div class='search-result'>Nenhum produto encontrado.</div>";
+            }
+          }
+        ?>
       </div>
       <a id="#1" href=""><img src="img/bell.svg" alt="" /></a>
       <a id="#2" href="" class="perfil"><img src="img/person-circle.svg" alt="" /></a>
@@ -48,13 +65,13 @@
           </a>
         </div>
         <div class="link">
-          <a id="#4" href="">
+          <a href="fornecedores.php">
             <img src="img/truck.svg" alt="" />
             <h3>Fornecedores</h3>
           </a>
         </div>
         <div class="link">
-          <a id="#5" href="">
+          <a href="relatorios.php">
             <img src="img/clipboard2-data.svg" alt="" />
             <h3>Relatórios</h3>
           </a>
@@ -125,17 +142,13 @@
     event.preventDefault();
     alert("Indisponível no momento."); 
   });
-  document.getElementById("#4").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-  document.getElementById("#5").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
   document.getElementById("#6").addEventListener("click", function(event) {
     event.preventDefault();
     alert("Indisponível no momento."); 
   });
 </script>
+<?php
+include("relatorios.php");
+$produto = new mysqli("localhost", "root", "", "produtos_db");
+?>
 </html>

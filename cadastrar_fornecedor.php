@@ -1,41 +1,33 @@
 <?php
   include("conexao.php");
-    $produto = "";
-    $quantidade = "";
-    $valor = "";
-    $total = "";
-    if($_SERVER['REQUEST_METHOD'] == 'GET'){
-        $id = $_GET["id"];
-        $sql = "SELECT * FROM produtos WHERE id=$id";
+    $sql ="CREATE TABLE IF NOT EXISTS fornecedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fornecedor VARCHAR (100) NOT NULL)";
+    $result = $mysqli->query($sql);
+    $sql ="SELECT * FROM fornecedores";
+    $result = $mysqli->query($sql);
+    $fornecedor = "";
+      
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $fornecedor = $_POST["fornecedor"];
+        $sql ="INSERT INTO fornecedores (fornecedor) VALUES ('$fornecedor')";
         $result = $mysqli->query($sql);
-        $row = $result->fetch_assoc();
-        $id = $row["id"];
-        $produto = $row["produto"];
-        $quantidade = $row["quantidade"];
-        $valor = $row["valor"];
-        }
-        else {
-            $id = $_GET["id"];
-            $produto = $_POST["produto"];
-            $quantidade = $_POST["quantidade"];
-            $valor = $_POST["valor"];
-            $sql = "UPDATE produtos SET produto='$produto', quantidade='$quantidade', valor='$valor' WHERE id = $id ";
-            $result = $mysqli->query($sql);
-            header("location: aplicativo.php");
-            exit;
-        }
+        header("location: fornecedores.php");
+        exit;
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banco de dados</title>
-    <link rel="stylesheet" href="css/style2.css" />
+    <title>Fornecedores</title>
+    <link rel="stylesheet" href="css/style3.css" />
   </head>
   <body>
     <header>
-      <p><b>Estoque</b></p>
+      <p><b>Fornecedores</b></p>
       <div class="pesquisa">
         <a id="#" href=""><img src="img/search.svg" alt="" /></a>
         <input class="input_search" type="text" />
@@ -69,7 +61,7 @@
           </a>
         </div>
         <div class="link">
-          <a href="relatorios.php">
+          <a" href="relatorios.php">
             <img src="img/clipboard2-data.svg" alt="" />
             <h3>Relatórios</h3>
           </a>
@@ -90,24 +82,16 @@
       <span class="bd">
       <div class="corpo2">
         <div class="bemvindo">
-            <h2>Editar Produto</h2>
+            <h2>Novo Fornecedor</h2>
         </div>
         <br>
         <div>
         <form method="POST">
-            <label for="">Nome do Produto</label>
+            <label for="">Nome do Fornecedor</label>
             <br>
-            <input name="produto" type="text" required value="<?php echo $produto;?>">
+            <input name="fornecedor" type="text" required>
             <br>
-            <label for="">Quantidade</label>
-            <br>
-            <input name="quantidade" type="number" value="<?php echo $quantidade;?>">
-            <br>
-            <label for="">Valor</label>
-            <br>
-            <input name="valor" type="text" value="<?php echo $valor;?>">
-            <br>
-            <button style="margin-top:30px" class="botao-editar" type="submit">Salvar</button>
+            <button style="margin-top:30px" class="botao-editar" type="submit">Cadastrar</button>
             <br>
         </form>
         </div>
@@ -137,8 +121,4 @@
     alert("Indisponível no momento."); 
   });
 </script>
-<?php
-include("relatorios.php");
-$produto = new mysqli("localhost", "root", "", "produtos_db");
-?>
 </html>

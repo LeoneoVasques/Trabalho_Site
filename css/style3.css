@@ -70,11 +70,6 @@ header p {
   width: 40%;
   height: 50%;
 }
-.search-result {
-  border-radius: 15px;
-  width: 40%;
-  height: 50%;
-}
 .link img {
   width: 40px;
   height: 40px;
@@ -163,7 +158,7 @@ th {
 .botao-editar:hover {
   background-color: rgb(0, 90, 0);
 }
-.novo_produto {
+.novo_fornecedor {
   background-color: green;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -173,7 +168,7 @@ th {
   color: inherit;
   color: white;
 }
-.novo_produto:hover {
+.novo_fornecedor:hover {
   background-color: rgb(0, 90, 0);
 }
 .corpo2 {

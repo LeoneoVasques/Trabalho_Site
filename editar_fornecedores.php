@@ -1,27 +1,20 @@
 <?php
   include("conexao.php");
-    $produto = "";
-    $quantidade = "";
-    $valor = "";
-    $total = "";
+    $fornecedor = "";
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         $id = $_GET["id"];
-        $sql = "SELECT * FROM produtos WHERE id=$id";
+        $sql = "SELECT * FROM fornecedores WHERE id=$id";
         $result = $mysqli->query($sql);
         $row = $result->fetch_assoc();
         $id = $row["id"];
-        $produto = $row["produto"];
-        $quantidade = $row["quantidade"];
-        $valor = $row["valor"];
+        $fornecedor = $row["fornecedor"];
         }
         else {
             $id = $_GET["id"];
-            $produto = $_POST["produto"];
-            $quantidade = $_POST["quantidade"];
-            $valor = $_POST["valor"];
-            $sql = "UPDATE produtos SET produto='$produto', quantidade='$quantidade', valor='$valor' WHERE id = $id ";
+            $fornecedor = $_POST["fornecedor"];
+            $sql = "UPDATE fornecedores SET fornecedor='$fornecedor' WHERE id = $id ";
             $result = $mysqli->query($sql);
-            header("location: aplicativo.php");
+            header("location: fornecedores.php");
             exit;
         }
 ?>
@@ -30,12 +23,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banco de dados</title>
-    <link rel="stylesheet" href="css/style2.css" />
+    <title>Fornecedores</title>
+    <link rel="stylesheet" href="css/style3.css" />
   </head>
   <body>
     <header>
-      <p><b>Estoque</b></p>
+      <p><b>Fornecedores</b></p>
       <div class="pesquisa">
         <a id="#" href=""><img src="img/search.svg" alt="" /></a>
         <input class="input_search" type="text" />
@@ -59,13 +52,13 @@
         <div class="link2">
           <a href="aplicativo.php">
             <img src="img/boxes.svg" alt="" />
-            <h3 id="selecionado">Produtos</h3>
+            <h3>Produtos</h3>
           </a>
         </div>
-        <div class="link">
+        <div class="link2 ">
           <a href="fornecedores.php">
             <img src="img/truck.svg" alt="" />
-            <h3>Fornecedores</h3>
+            <h3 id="selecionado">Fornecedores</h3>
           </a>
         </div>
         <div class="link">
@@ -90,22 +83,14 @@
       <span class="bd">
       <div class="corpo2">
         <div class="bemvindo">
-            <h2>Editar Produto</h2>
+            <h2>Editar Fornecedores</h2>
         </div>
         <br>
         <div>
         <form method="POST">
-            <label for="">Nome do Produto</label>
+            <label for="">Nome do Fornecedor</label>
             <br>
-            <input name="produto" type="text" required value="<?php echo $produto;?>">
-            <br>
-            <label for="">Quantidade</label>
-            <br>
-            <input name="quantidade" type="number" value="<?php echo $quantidade;?>">
-            <br>
-            <label for="">Valor</label>
-            <br>
-            <input name="valor" type="text" value="<?php echo $valor;?>">
+            <input name="fornecedor" type="text" required value="<?php echo $fornecedor;?>">
             <br>
             <button style="margin-top:30px" class="botao-editar" type="submit">Salvar</button>
             <br>
@@ -139,6 +124,6 @@
 </script>
 <?php
 include("relatorios.php");
-$produto = new mysqli("localhost", "root", "", "produtos_db");
+$fornecedor = new mysqli("localhost", "root", "", "produtos_db");
 ?>
 </html>

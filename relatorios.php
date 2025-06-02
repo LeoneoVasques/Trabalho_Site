@@ -1,41 +1,27 @@
 <?php
-  include("conexao.php");
-    $produto = "";
-    $quantidade = "";
-    $valor = "";
-    $total = "";
-    if($_SERVER['REQUEST_METHOD'] == 'GET'){
-        $id = $_GET["id"];
-        $sql = "SELECT * FROM produtos WHERE id=$id";
+    include("conexao.php");
+        $sql = "CREATE TABLE IF NOT EXISTS relatorio_log (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        pagina VARCHAR(100) NOT NULL,
+        banco_origem VARCHAR(100) NOT NULL,
+        conteudo TEXT,
+        data_hora DATETIME DEFAULT CURRENT_TIMESTAMP
+        )";
         $result = $mysqli->query($sql);
-        $row = $result->fetch_assoc();
-        $id = $row["id"];
-        $produto = $row["produto"];
-        $quantidade = $row["quantidade"];
-        $valor = $row["valor"];
-        }
-        else {
-            $id = $_GET["id"];
-            $produto = $_POST["produto"];
-            $quantidade = $_POST["quantidade"];
-            $valor = $_POST["valor"];
-            $sql = "UPDATE produtos SET produto='$produto', quantidade='$quantidade', valor='$valor' WHERE id = $id ";
-            $result = $mysqli->query($sql);
-            header("location: aplicativo.php");
-            exit;
-        }
+        $sql ="SELECT * FROM relatorio_log";
+        $result = $mysqli->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banco de dados</title>
-    <link rel="stylesheet" href="css/style2.css" />
+    <title>Relatorios</title>
+    <link rel="stylesheet" href="css/style4.css" />
   </head>
   <body>
     <header>
-      <p><b>Estoque</b></p>
+      <p><b>Relatorio</b></p>
       <div class="pesquisa">
         <a id="#" href=""><img src="img/search.svg" alt="" /></a>
         <input class="input_search" type="text" />
@@ -56,10 +42,10 @@
             <h3>Dashboard</h3>
           </a>
         </div>
-        <div class="link2">
+        <div class="link">
           <a href="aplicativo.php">
             <img src="img/boxes.svg" alt="" />
-            <h3 id="selecionado">Produtos</h3>
+            <h3>Produtos</h3>
           </a>
         </div>
         <div class="link">
@@ -68,10 +54,10 @@
             <h3>Fornecedores</h3>
           </a>
         </div>
-        <div class="link">
+        <div class="link2">
           <a href="relatorios.php">
             <img src="img/clipboard2-data.svg" alt="" />
-            <h3>Relatórios</h3>
+            <h3 id="selecionado">Relatórios</h3>
           </a>
         </div>
         <div class="link">
@@ -86,32 +72,6 @@
             <h3>Sair</h3>
           </a>
         </div>
-      </span>
-      <span class="bd">
-      <div class="corpo2">
-        <div class="bemvindo">
-            <h2>Editar Produto</h2>
-        </div>
-        <br>
-        <div>
-        <form method="POST">
-            <label for="">Nome do Produto</label>
-            <br>
-            <input name="produto" type="text" required value="<?php echo $produto;?>">
-            <br>
-            <label for="">Quantidade</label>
-            <br>
-            <input name="quantidade" type="number" value="<?php echo $quantidade;?>">
-            <br>
-            <label for="">Valor</label>
-            <br>
-            <input name="valor" type="text" value="<?php echo $valor;?>">
-            <br>
-            <button style="margin-top:30px" class="botao-editar" type="submit">Salvar</button>
-            <br>
-        </form>
-        </div>
-    </div>
       </span>
     </div>
   </body>
@@ -137,8 +97,15 @@
     alert("Indisponível no momento."); 
   });
 </script>
-<?php
-include("relatorios.php");
-$produto = new mysqli("localhost", "root", "", "produtos_db");
+  <?php
+$mysqli = new mysqli("localhost", "root", "", "banco_log");
+
+$result = $mysqli->query("SELECT * FROM logs ORDER BY data_hora DESC");
+
+while ($log = $result->fetch_assoc()) {
+    echo "[" . $log['data_hora'] . "] ";
+    echo $log['pagina'] . " (Banco: " . $log['banco_origem'] . "): ";
+    echo $log['conteudo'] . "<br>";
+}
 ?>
 </html>

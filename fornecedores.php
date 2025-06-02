@@ -1,41 +1,24 @@
 <?php
   include("conexao.php");
-    $produto = "";
-    $quantidade = "";
-    $valor = "";
-    $total = "";
-    if($_SERVER['REQUEST_METHOD'] == 'GET'){
-        $id = $_GET["id"];
-        $sql = "SELECT * FROM produtos WHERE id=$id";
-        $result = $mysqli->query($sql);
-        $row = $result->fetch_assoc();
-        $id = $row["id"];
-        $produto = $row["produto"];
-        $quantidade = $row["quantidade"];
-        $valor = $row["valor"];
-        }
-        else {
-            $id = $_GET["id"];
-            $produto = $_POST["produto"];
-            $quantidade = $_POST["quantidade"];
-            $valor = $_POST["valor"];
-            $sql = "UPDATE produtos SET produto='$produto', quantidade='$quantidade', valor='$valor' WHERE id = $id ";
-            $result = $mysqli->query($sql);
-            header("location: aplicativo.php");
-            exit;
-        }
+    $sql ="CREATE TABLE IF NOT EXISTS fornecedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fornecedor VARCHAR (100) NOT NULL)";
+    $result = $mysqli->query($sql);
+    $sql ="SELECT * FROM fornecedores";
+    $result = $mysqli->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banco de dados</title>
-    <link rel="stylesheet" href="css/style2.css" />
+    <title>Fornecedores</title>
+    <link rel="stylesheet" href="css/style3.css"/>
   </head>
   <body>
     <header>
-      <p><b>Estoque</b></p>
+      <p><b>Fornecedor</b></p>
       <div class="pesquisa">
         <a id="#" href=""><img src="img/search.svg" alt="" /></a>
         <input class="input_search" type="text" />
@@ -56,16 +39,16 @@
             <h3>Dashboard</h3>
           </a>
         </div>
-        <div class="link2">
+        <div class="link">
           <a href="aplicativo.php">
             <img src="img/boxes.svg" alt="" />
-            <h3 id="selecionado">Produtos</h3>
+            <h3>Produtos</h3>
           </a>
         </div>
-        <div class="link">
+        <div class="link2">
           <a href="fornecedores.php">
             <img src="img/truck.svg" alt="" />
-            <h3>Fornecedores</h3>
+            <h3 id="selecionado">Fornecedores</h3>
           </a>
         </div>
         <div class="link">
@@ -88,34 +71,36 @@
         </div>
       </span>
       <span class="bd">
-      <div class="corpo2">
-        <div class="bemvindo">
-            <h2>Editar Produto</h2>
+        <div class="adicionar">
+        <a class="novo_fornecedor" href="cadastrar_fornecedor.php">Novo Fornecedor</a>
         </div>
-        <br>
-        <div>
-        <form method="POST">
-            <label for="">Nome do Produto</label>
-            <br>
-            <input name="produto" type="text" required value="<?php echo $produto;?>">
-            <br>
-            <label for="">Quantidade</label>
-            <br>
-            <input name="quantidade" type="number" value="<?php echo $quantidade;?>">
-            <br>
-            <label for="">Valor</label>
-            <br>
-            <input name="valor" type="text" value="<?php echo $valor;?>">
-            <br>
-            <button style="margin-top:30px" class="botao-editar" type="submit">Salvar</button>
-            <br>
-        </form>
-        </div>
-    </div>
+      <table>
+        <thead>
+          <tr>
+            <th class='id-row'>id</th>
+            <th class='fornecedor-row'>Fornecedor</th>
+            <th class='acao-row'>Ação</th>
+          </tr>
+        </thead>
+    <?php
+    while($row = $result->fetch_assoc()){
+        echo "
+                    <tr>
+                        <td  class='id-row'>$row[id]</td>
+                        <td class='fornecedor-row'>$row[fornecedor]</td>
+                        <td class='acao-row'>
+                            <a class='botao-editar' href='editar_fornecedores.php?id=$row[id]'>Editar</a>
+                            <a class='botao-excluir' href='excluir_fornecedores.php?id=$row[id]'>Excluir</a>
+                        </td>
+                    </tr> 
+        ";
+    }
+    ?>
+    </table>
       </span>
     </div>
   </body>
-  <script>
+<script>
   document.getElementById("#").addEventListener("click", function(event) {
     event.preventDefault();
     alert("Indisponível no momento."); 
@@ -139,6 +124,6 @@
 </script>
 <?php
 include("relatorios.php");
-$produto = new mysqli("localhost", "root", "", "produtos_db");
+$fornecedor = new mysqli("localhost", "root", "", "produtos_db");
 ?>
 </html>
