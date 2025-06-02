@@ -42,12 +42,6 @@
             <h3>Menu</h3>
           </div>
         </div>
-        <div class="link">
-          <a id="#3" href="">
-            <img src="img/kanban.svg" alt="" />
-            <h3>Dashboard</h3>
-          </a>
-        </div>
         <div class="link2">
           <a href="aplicativo.php">
             <img src="img/boxes.svg" alt="" />
@@ -64,12 +58,6 @@
           <a" href="relatorios.php">
             <img src="img/clipboard2-data.svg" alt="" />
             <h3>Relatórios</h3>
-          </a>
-        </div>
-        <div class="link">
-          <a id="#6" href="">
-            <img src="img/gear.svg" alt="" />
-            <h3>Configurações</h3>
           </a>
         </div>
         <div class="link">

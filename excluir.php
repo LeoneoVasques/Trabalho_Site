@@ -6,8 +6,3 @@ $result = $mysqli->query($sql);
 header("location: aplicativo.php");
 exit;
 ?>
-
-<?php
-include("relatorios.php");
-$id = new mysqli("localhost", "root", "", "produtos_db");
-?>

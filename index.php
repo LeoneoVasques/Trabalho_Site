@@ -49,8 +49,6 @@
             <label for="">Digite sua senha</label>
             <input name="senha" type="password" required>
             <br>
-            <a class="esqueci" id="indisponivel" href="">Esqueci a senha</a>
-            <br>
             <button class="entrar" type="submit">Entrar</button>
         </div>
         <div class="embaixo">
