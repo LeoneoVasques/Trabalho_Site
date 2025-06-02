@@ -27,15 +27,6 @@
     <link rel="stylesheet" href="css/style3.css" />
   </head>
   <body>
-    <header>
-      <p><b>Fornecedores</b></p>
-      <div class="pesquisa">
-        <a id="#" href=""><img src="img/search.svg" alt="" /></a>
-        <input class="input_search" type="text" />
-      </div>
-      <a id="#1" href=""><img src="img/bell.svg" alt="" /></a>
-      <a id="#2" href="" class="perfil"><img src="img/person-circle.svg" alt="" /></a>
-    </header>
     <div class="corpo">
       <span class="menu">
         <div class="link">
@@ -43,7 +34,7 @@
             <h3>Menu</h3>
           </div>
         </div>
-        <div class="link2">
+        <div class="link">
           <a href="aplicativo.php">
             <img src="img/boxes.svg" alt="" />
             <h3>Produtos</h3>

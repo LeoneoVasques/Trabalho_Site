@@ -56,7 +56,7 @@
       <table>
         <thead>
           <tr>
-            <th class='id-row'>id</th>
+            <th class='id-row'>ID</th>
             <th class='fornecedor-row'>Fornecedor</th>
             <th class='acao-row'>Ação</th>
           </tr>
