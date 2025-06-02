@@ -17,7 +17,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Relatorios</title>
-    <link rel="stylesheet" href="css/style4.css" />
+    <link rel="stylesheet" href="css/style3.css" />
   </head>
   <body>
     <div class="corpo">
@@ -52,39 +52,41 @@
           </a>
         </div>
       </span>
+      <span class="bd">
+        <div class="adicionar">
+          <a class="novo_produto" href="cadastrar_produto.php"></a>
+        </div>
+      <table>
+        <thead>
+          <tr>
+            <th class='id-row'>id</th>
+            <th class='produto-row'>Produto</th>
+            <th class='quantidade-row'>Quantidade</th>
+            <th class='valor-row'>Valor</th>
+            <th class='total-row'>Valor em estoque</th>
+            <th class='acao-row'>Ação</th>
+          </tr>
+        </thead>
+    <?php
+    $result = $mysqli->query("SELECT * FROM relatorio_log ORDER BY data_hora DESC");
+    while($row = $result->fetch_assoc()){
+        echo "
+                    <tr>
+                        <td  class='id-row'>$row[id]</td>
+                        <td class='produto-row'>$row[produto]</td>
+                        <td class='quantidade-row'>$row[quantidade]</td>
+                        <td class='valor-row'>R$ $row[valor]</td>
+                        <td class='total-row'>R$ $row[total]</td>
+                        <td class='acao-row'>
+                            <a class='botao-editar' href='editar_produto.php?id=$row[id]'>Editar</a>
+                            <a class='botao-excluir' href='excluir.php?id=$row[id]'>Excluir</a>
+                        </td>
+                    </tr> 
+        ";
+    }
+    ?>
+    </table>
+      </span>
     </div>
   </body>
-  <script>
-  document.getElementById("#").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-  document.getElementById("#1").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-  document.getElementById("#2").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-  document.getElementById("#3").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-  document.getElementById("#6").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-</script>
-  <?php
-$mysqli = new mysqli("localhost", "root", "", "banco_log");
-
-$result = $mysqli->query("SELECT * FROM logs ORDER BY data_hora DESC");
-
-while ($log = $result->fetch_assoc()) {
-    echo "[" . $log['data_hora'] . "] ";
-    echo $log['pagina'] . " (Banco: " . $log['banco_origem'] . "): ";
-    echo $log['conteudo'] . "<br>";
-}
-?>
 </html>

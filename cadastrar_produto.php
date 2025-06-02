@@ -103,27 +103,4 @@
       </span>
     </div>
   </body>
-  <script>
-  document.getElementById("#").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-  document.getElementById("#1").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-  document.getElementById("#2").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-  document.getElementById("#3").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-  document.getElementById("#6").addEventListener("click", function(event) {
-    event.preventDefault();
-    alert("Indisponível no momento."); 
-  });
-</script>
-
 </html>

@@ -111,8 +111,10 @@ header img {
   align-items: center;
   width: 100%;
   height: 35em;
+  margin-top: 30px;
 }
 table {
+  margin-top: 30px;
   background-color: white;
   width: 60%;
   min-width: 595  px;
