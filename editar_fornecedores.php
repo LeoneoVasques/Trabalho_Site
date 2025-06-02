@@ -1,5 +1,6 @@
 <?php
   include("conexao.php");
+  include("log.php");
     $fornecedor = "";
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         $id = $_GET["id"];
@@ -14,6 +15,7 @@
             $fornecedor = $_POST["fornecedor"];
             $sql = "UPDATE fornecedores SET fornecedor='$fornecedor' WHERE id = $id ";
             $result = $mysqli->query($sql);
+            registrar_log($mysqli, 'EDITAR', 'fornecedores', "$fornecedor");
             header("location: fornecedores.php");
             exit;
         }
@@ -26,7 +28,7 @@
     <title>Fornecedores</title>
     <link rel="stylesheet" href="css/style3.css" />
   </head>
-  <body>
+  <body>  
     <div class="corpo">
       <span class="menu">
         <div class="link">

@@ -1,5 +1,6 @@
 <?php
   include("conexao.php");
+  include("log.php");
     $produto = "";
     $quantidade = "";
     $valor = "";
@@ -21,6 +22,7 @@
             $valor = $_POST["valor"];
             $sql = "UPDATE produtos SET produto='$produto', quantidade='$quantidade', valor='$valor' WHERE id = $id ";
             $result = $mysqli->query($sql);
+            registrar_log($mysqli, 'EDITAR', 'produtos', "$produto");
             header("location: aplicativo.php");
             exit;
         }

@@ -1,15 +1,6 @@
 <?php
     include("conexao.php");
-        $sql = "CREATE TABLE IF NOT EXISTS relatorio_log (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        pagina VARCHAR(100) NOT NULL,
-        banco_origem VARCHAR(100) NOT NULL,
-        conteudo TEXT,
-        data_hora DATETIME DEFAULT CURRENT_TIMESTAMP
-        )";
-        $result = $mysqli->query($sql);
-        $sql ="SELECT * FROM relatorio_log";
-        $result = $mysqli->query($sql);
+    include("log.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -59,28 +50,23 @@
       <table>
         <thead>
           <tr>
-            <th class='id-row'>id</th>
-            <th class='produto-row'>Produto</th>
-            <th class='quantidade-row'>Quantidade</th>
-            <th class='valor-row'>Valor</th>
-            <th class='total-row'>Valor em estoque</th>
-            <th class='acao-row'>Ação</th>
+            <th class='id-row'>ID</th>
+            <th class='produto-row'>Ação</th>
+            <th class='quantidade-row'>Tabela</th>
+            <th class='quantidade-row'>Item</th>
+            <th class='valor-row'>Horário</th>
           </tr>
         </thead>
     <?php
-    $result = $mysqli->query("SELECT * FROM relatorio_log ORDER BY data_hora DESC");
+    $result = $mysqli->query("SELECT * FROM logs ORDER BY timestamp DESC");
     while($row = $result->fetch_assoc()){
         echo "
                     <tr>
                         <td  class='id-row'>$row[id]</td>
-                        <td class='produto-row'>$row[produto]</td>
-                        <td class='quantidade-row'>$row[quantidade]</td>
-                        <td class='valor-row'>R$ $row[valor]</td>
-                        <td class='total-row'>R$ $row[total]</td>
-                        <td class='acao-row'>
-                            <a class='botao-editar' href='editar_produto.php?id=$row[id]'>Editar</a>
-                            <a class='botao-excluir' href='excluir.php?id=$row[id]'>Excluir</a>
-                        </td>
+                        <td class='acao-row'>$row[action]</td>
+                        <td class='tabela-row'>$row[table_name]</td>
+                        <td class='tabela-row'>$row[item]</td>
+                        <td class='detalhes-row'>$row[timestamp]</td>
                     </tr> 
         ";
     }

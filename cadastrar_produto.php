@@ -1,5 +1,6 @@
 <?php
   include("conexao.php");
+  include("log.php");
     $sql ="CREATE TABLE IF NOT EXISTS produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     produto VARCHAR (100) NOT NULL,
@@ -20,6 +21,7 @@
         $valor = $_POST["valor"];
         $sql ="INSERT INTO produtos (produto, quantidade, valor) VALUES ('$produto', '$quantidade', '$valor')";
         $result = $mysqli->query($sql);
+        registrar_log($mysqli, 'CRIAR', 'produtos', "$produto");
         header("location: aplicativo.php");
         exit;
     }

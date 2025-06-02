@@ -1,6 +1,7 @@
 <?php
   include("conexao.php");
-    $sql ="CREATE TABLE IF NOT EXISTS fornecedores (
+  include("log.php");
+  $sql ="CREATE TABLE IF NOT EXISTS fornecedores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     fornecedor VARCHAR (100) NOT NULL)";
     $result = $mysqli->query($sql);
@@ -8,14 +9,16 @@
     $result = $mysqli->query($sql);
     $fornecedor = "";
     
-      
+    
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $fornecedor = $_POST["fornecedor"];
-        $sql ="INSERT INTO fornecedores (fornecedor) VALUES ('$fornecedor')";
-        $result = $mysqli->query($sql);
-        header("location: fornecedores.php");
-        exit;
+      $fornecedor = $_POST["fornecedor"];
+      $sql ="INSERT INTO fornecedores (fornecedor) VALUES ('$fornecedor')";
+      $result = $mysqli->query($sql);
+      registrar_log($mysqli, 'CRIAR', 'fornecedores', "$fornecedor");
+      header("location: fornecedores.php");
+      exit;
     }
+    
 ?>
 
 <!DOCTYPE html>
