@@ -58,10 +58,4 @@
     </div>
     
 </body>
-<script>
-    document.getElementById("indisponivel").addEventListener("click", function(event) {
-        event.preventDefault();
-        alert("Indisponível no momento."); 
-    });
-</script>
 </html>

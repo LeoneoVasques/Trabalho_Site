@@ -7,6 +7,7 @@
     $sql ="SELECT * FROM fornecedores";
     $result = $mysqli->query($sql);
     $fornecedor = "";
+    
       
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $fornecedor = $_POST["fornecedor"];

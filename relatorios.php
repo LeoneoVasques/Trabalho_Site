@@ -20,15 +20,6 @@
     <link rel="stylesheet" href="css/style4.css" />
   </head>
   <body>
-    <header>
-      <p><b>Relatorio</b></p>
-      <div class="pesquisa">
-        <a id="#" href=""><img src="img/search.svg" alt="" /></a>
-        <input class="input_search" type="text" />
-      </div>
-      <a id="#1" href=""><img src="img/bell.svg" alt="" /></a>
-      <a id="#2" href="" class="perfil"><img src="img/person-circle.svg" alt="" /></a>
-    </header>
     <div class="corpo">
       <span class="menu">
         <div class="link">

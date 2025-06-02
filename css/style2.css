@@ -51,6 +51,16 @@ header p {
   border-radius: 5px;
   margin-bottom: 30px;
 }
+.linkmenu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  padding-left: 20px;
+  flex-direction: row;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
 .link2 {
   display: flex;
   align-items: center;

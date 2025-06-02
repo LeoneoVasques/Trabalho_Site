@@ -18,36 +18,10 @@
     <title>Banco de dados</title>
     <link rel="stylesheet" href="css/style2.css" />
   </head>
-  <body>
-    <header>
-      <p><b>Estoque</b></p>
-      <div class="pesquisa">
-        <a href=""><img src="img/search.svg" alt="" /></a>
-        <input class="input_search" type="text" />
-        <?php 
-          if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $search = $_POST['search'];
-            $sql = "SELECT * FROM produtos WHERE produto LIKE '%$search%'";
-            $result = $mysqli->query($sql);
-
-            if($result->num_rows > 0) {
-              while($row = $result->fetch_assoc()) {
-                echo "<div class='search-result'>";
-                echo "<p>" . $row['produto'] . "</p>";
-                echo "</div>";
-              }
-            } else {
-              echo "<div class='search-result'>Nenhum produto encontrado.</div>";
-            }
-          }
-        ?>
-      </div>
-      <a id="#1" href=""><img src="img/bell.svg" alt="" /></a>
-      <a id="#2" href="" class="perfil"><img src="img/person-circle.svg" alt="" /></a>
-    </header>
+  <body>  
     <div class="corpo">
       <span class="menu">
-        <div class="link">
+        <div class="linkmenu">
           <div class="menusopraele">
             <h3>Menu</h3>
           </div>
