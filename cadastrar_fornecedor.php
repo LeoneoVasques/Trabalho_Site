@@ -37,13 +37,13 @@
             <h3>Menu</h3>
           </div>
         </div>
-        <div class="link2">
+        <div class="link">
           <a href="aplicativo.php">
             <img src="img/boxes.svg" alt="" />
             <h3 id="selecionado">Produtos</h3>
           </a>
         </div>
-        <div class="link">
+        <div class="link2">
           <a href="fornecedores.php">
             <img src="img/truck.svg" alt="" />
             <h3>Fornecedores</h3>
